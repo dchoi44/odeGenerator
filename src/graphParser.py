@@ -32,7 +32,7 @@ def parser_main(fname = './facebook/0.edges', directed = False):
 	udict = UserDict()
 	func = lambda x, y: x.push_friend(y)
 
-	print 'Loading ' + fname + ' file...'
+	print('Loading ' + fname + ' file...')
 	
 	with open(fname, 'r') as fin:
 		for line in fin:
@@ -40,5 +40,5 @@ def parser_main(fname = './facebook/0.edges', directed = False):
 			func(nod_from, nod_to)
 			if not directed: func(nod_to, nod_from)
 
-	print 'Edges are successfully loaded!'
+	print('Edges are successfully loaded!')
 	return udict

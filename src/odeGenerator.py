@@ -1,11 +1,5 @@
 #! python3
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Aug  9 10:35:03 2017
-
-@author: Santiago
-"""
-
 import odeParser
 import graphParser
 
@@ -32,7 +26,7 @@ for key,value in opinionDict.items():
 
 for key,value in graphDict.items():
     if value.get_opinion() == 1:
-        initlist.append(['y' + str(key),'=','1'])
+        initlist.append(['y1' + str(key),'=','1'])
         initlist.append(['m' + str(key),'=','0'])
         initlist.append(['n' + str(key),'=','0'])
     if value.get_opinion() == 0:
@@ -55,7 +49,7 @@ def eq_writer(equation,idFrom,idTo):
     permutes = list(product(*[a,a]))
     res = []
     for i in range(4):
-        res.append(' '.join(equation).replace('yes', 'y{}').\
+        res.append(' '.join(equation).replace('yes1', 'y{}').\
             replace('no', 'n{}').replace('maybe', 'm{}').\
             format(permutes[i][0][0], permutes[i][0][1],
                    permutes[i][1][0], permutes[i][1][1]).\
