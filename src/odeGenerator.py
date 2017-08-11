@@ -85,3 +85,44 @@ odeParser.odeWriter(workDataDict)
 
 
      
+
+
+begin_reaction = dict()
+
+from itertools import product, permutations
+def eq_writer(equation,idFrom,idTo):
+    a = list(permutations([idFrom, idTo], 2))
+    permutes = list(product(*[a,a]))
+    res = []
+    for i in range(4):
+        res.append(' '.join(equation).replace('yes', 'y{}').\
+            replace('no', 'n{}').replace('maybe', 'm{}').\
+            format(permutes[i][0][0], permutes[i][0][1],
+                   permutes[i][1][0], permutes[i][1][1]).\
+            split())
+    return res
+
+from collections import deque
+    
+curr_node = graphDict.popitem()[1]
+eq_list = workDataDict[3]['begin reactions']
+waiting_list = deque([])
+eq_list_new = []
+while True:
+    curr_node.visiting()
+    for node in curr_node.get_friends():
+        if not node.is_visited():
+            for i in range(len(eq_list)):
+                eq_list_new += eq_writer(eq_list[i], curr_node.get_uid(), node.get_uid())
+            waiting_list.append(node)
+    try:
+        curr_node = waiting_list.popleft()
+    except:
+        break
+
+workDataDict[3]['begin reactions'] = eq_list_new
+
+odeParser.odeWriter(workDataDict)
+
+
+     

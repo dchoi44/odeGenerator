@@ -117,8 +117,6 @@ def odeWriter(workData,outfile = 'YesOrNoParser.ode'):
                print(workData[indexOrder][beginFlag],file=outfile)
         
         print(finalOutfileLine,file=outfile)
-
-
             
                 
         
