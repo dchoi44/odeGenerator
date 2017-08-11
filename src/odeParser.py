@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-def odeParser(infile = 'YesOrNo.ode'):
+def odeParser(infile = '../dat/YesOrNo.ode'):
     with open(infile,'r') as infile:
         
                 

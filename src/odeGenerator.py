@@ -1,17 +1,18 @@
-#! python3
 # -*- coding: utf-8 -*-
 import odeParser
 import graphParser
 
+workDataDict = odeParser.odeParser()
+reactionComponents = [initParameters.split('=')[0].strip() for initParameters in workDataDict[2]['begin init']]
+opinionDict = {i:reactionComponents[i] for i in range(len(reactionComponents))}
+
 graphDict = graphParser.parser_main().dict
 
-workDataDict = odeParser.odeParser()
 
 for key,value in workDataDict.items():
     print(key,value)
 
-reactionComponents = [initParameters.split('=')[0].strip() for initParameters in workDataDict[2]['begin init']]
-print(reactionComponents)
+print(reactionComponents) 
 
 #Here we can include a step in which we send this opinions to the graph opinion generator so we
 #can no which of the possible several opinions has been chosen by the user
@@ -19,14 +20,12 @@ print(reactionComponents)
 begin_initial = dict()
 initlist = []
 
-opinionDict = {i:reactionComponents[i] for i in range(len(reactionComponents))}
-
 for key,value in opinionDict.items():
     print(key,value)
 
 for key,value in graphDict.items():
     if value.get_opinion() == 1:
-        initlist.append(['y1' + str(key),'=','1'])
+        initlist.append(['y' + str(key),'=','1'])
         initlist.append(['m' + str(key),'=','0'])
         initlist.append(['n' + str(key),'=','0'])
     if value.get_opinion() == 0:
