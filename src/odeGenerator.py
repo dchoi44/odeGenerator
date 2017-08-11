@@ -15,19 +15,19 @@ workDataDict = odeParser.odeParser()
 for key,value in workDataDict.items():
     print(key,value)
 
-reactionComponents = [initParameters.split('=')[0] for initParameters in workDataDict[2]['begin init']]
+reactionComponents = [initParameters.split('=')[0].strip() for initParameters in workDataDict[2]['begin init']]
 print(reactionComponents)
-
-opinionDict = {i:reactionComponents[i] for i in range(len(reactionComponents))}
-
-for key,value in opinionDict.items():
-    print(key,value)
 
 #Here we can include a step in which we send this opinions to the graph opinion generator so we
 #can no which of the possible several opinions has been chosen by the user
 
 begin_initial = dict()
 initlist = []
+
+opinionDict = {i:reactionComponents[i] for i in range(len(reactionComponents))}
+
+for key,value in opinionDict.items():
+    print(key,value)
 
 for key,value in graphDict.items():
     if value.get_opinion() == 1:

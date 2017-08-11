@@ -27,9 +27,9 @@ def odeParser(infile = 'YesOrNo.ode'):
         #Key of workData dict to keep the appearance order of the different parser code blocks
         index = 0    
         for line in infile:
-
-            line = line.strip()                
-
+            
+            line = line.strip().replace("\t","")   
+            
             lineWordList = line.split()
             
             twoFirstWords = ' '.join(lineWordList[:2])
