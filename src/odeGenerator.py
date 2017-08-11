@@ -25,7 +25,7 @@ initlist = []
 
 for key,value in graphDict.items():
     if value.get_opinion() == 1:
-        initlist.append(['y' + str(key),'=','1'])
+        initlist.append(['y1' + str(key),'=','1'])
         initlist.append(['m' + str(key),'=','0'])
         initlist.append(['n' + str(key),'=','0'])
     if value.get_opinion() == 0:
