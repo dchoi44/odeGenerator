@@ -48,7 +48,7 @@ def eq_writer(equation,idFrom,idTo):
     permutes = list(product(*[a,a]))
     res = []
     for i in range(4):
-        res.append(' '.join(equation).replace('yes', 'y{}').\
+        res.append(' '.join(equation).replace('yes1', 'y{}').\
             replace('no', 'n{}').replace('maybe', 'm{}').\
             format(permutes[i][0][0], permutes[i][0][1],
                    permutes[i][1][0], permutes[i][1][1]).\
