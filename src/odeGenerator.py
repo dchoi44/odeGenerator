@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Aug  9 10:35:03 2017
-
-@author: Santiago
-"""
-
 import odeParser
 import graphParser
 

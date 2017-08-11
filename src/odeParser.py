@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Aug  3 23:14:45 2017
-
-@author: Santiago Romagosa Arjona
-"""
 
 def odeParser(infile = 'YesOrNo.ode'):
     with open(infile,'r') as infile:
