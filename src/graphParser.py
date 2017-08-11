@@ -31,7 +31,7 @@ class UserDict:
 		self.dict = {}
 
 	def push_usr(self, uid):
-		if uid in self.dict.keys():
+		if uid in self.dict:
 			return self.dict[uid]
 		else:
 			self.dict[uid] = Voter(int((random.random() * 3 + 1) / 1) - 2, uid)
