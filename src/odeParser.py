@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-def odeParser(infile = '../dat/YesOrNo.ode'):
+def odeParser(infile):
+    if infile == None:
+        infile = '../dat/YesOrNo.ode'
     with open(infile,'r') as infile:
         
                 
@@ -88,7 +90,9 @@ def odeParser(infile = '../dat/YesOrNo.ode'):
      
     
     
-def odeWriter(workData,outfile = 'YesOrNoParser.ode'):  
+def odeWriter(workData, outfile):  
+    if outfile == None:
+        outfile = '../out/YesOrNoParser.ode'
     
     beginFlags = ['begin model','begin parameters','begin init','begin reactions','simulateODE']
     endFlags = ['end model','end parameters','end init','end reactions']

@@ -1,33 +1,46 @@
 import random
 
-# # Voter class is legacy now, not used in the main function.
-# class Voter:
-# 	def __init__(self, opinion):
-# 		self.__opinion = opinion
-# 		self.__friends = []
+# Voter class is legacy now, not used in the main function.
+class Voter:
+	def __init__(self, opinion, uid):
+		self.__opinion = opinion
+		self.__friends = []
+		self.__uid = uid
+		self.__visited = False
 
-# 	def get_friends(self):
-# 		return self.__friends
+	def get_friends(self):
+		return self.__friends
 
-# 	def get_opinion(self):
-# 		return self.__opinion
+	def get_opinion(self):
+		return self.__opinion
 
-# 	def push_friend(self, friend):
-# 		self.__friends.append(friend)
+	def get_uid(self):
+		return self.__uid
 
-# class UserDict:
-# 	def __init__(self):
-# 		self.dict = {}
+	def push_friend(self, friend):
+		self.__friends.append(friend)
 
-# 	def push_usr(self, uid):
-# 		if self.dict.has_key(uid):
-# 			return self.dict[uid]
-# 		else:
-# 			self.dict[uid] = Voter(int((random.random() * 3 + 1) / 1) - 2)
-# 			return self.dict[uid]
-#
+	def is_visited(self):
+		return self.__visited
 
-def parser_main(fname = './facebook/0.edges', directed = False):
+	def visiting(self):
+		self.__visited = True
+
+class UserDict:
+	def __init__(self):
+		self.dict = {}
+
+	def push_usr(self, uid):
+		if uid in self.dict.keys():
+			return self.dict[uid]
+		else:
+			self.dict[uid] = Voter(int((random.random() * 3 + 1) / 1) - 2, uid)
+			return self.dict[uid]
+
+
+def parser_main(fname, directed = False):
+	if fname == None:
+		fname = '../dat/practice.txt'
 
 	udict = UserDict()
 	func = lambda x, y: x.push_friend(y)

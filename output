@@ -1,0 +1,325 @@
+begin model YesOrNo
+begin parameters
+opinionChangeRate = 0.01
+end parameters
+begin init
+y1 = 1
+m1 = 0
+n1 = 0
+y2 = 0
+m2 = 1
+n2 = 0
+y3 = 0
+m3 = 1
+n3 = 0
+y4 = 0
+m4 = 0
+n4 = 1
+y5 = 1
+m5 = 0
+n5 = 0
+y6 = 0
+m6 = 1
+n6 = 0
+y7 = 0
+m7 = 1
+n7 = 0
+y8 = 1
+m8 = 0
+n8 = 0
+y9 = 0
+m9 = 1
+n9 = 0
+end init
+begin reactions
+y1 + n2 -> y1 + m2 , opinionChangeRate
+y1 + n2 -> y2 + m1 , opinionChangeRate
+y2 + n1 -> y1 + m2 , opinionChangeRate
+y2 + n1 -> y2 + m1 , opinionChangeRate
+y1 + m2 -> y1 + y2 , opinionChangeRate
+y1 + m2 -> y2 + y1 , opinionChangeRate
+y2 + m1 -> y1 + y2 , opinionChangeRate
+y2 + m1 -> y2 + y1 , opinionChangeRate
+n1 + y2 -> n1 + m2 , opinionChangeRate
+n1 + y2 -> n2 + m1 , opinionChangeRate
+n2 + y1 -> n1 + m2 , opinionChangeRate
+n2 + y1 -> n2 + m1 , opinionChangeRate
+n1 + m2 -> n1 + n2 , opinionChangeRate
+n1 + m2 -> n2 + n1 , opinionChangeRate
+n2 + m1 -> n1 + n2 , opinionChangeRate
+n2 + m1 -> n2 + n1 , opinionChangeRate
+y1 + n5 -> y1 + m5 , opinionChangeRate
+y1 + n5 -> y5 + m1 , opinionChangeRate
+y5 + n1 -> y1 + m5 , opinionChangeRate
+y5 + n1 -> y5 + m1 , opinionChangeRate
+y1 + m5 -> y1 + y5 , opinionChangeRate
+y1 + m5 -> y5 + y1 , opinionChangeRate
+y5 + m1 -> y1 + y5 , opinionChangeRate
+y5 + m1 -> y5 + y1 , opinionChangeRate
+n1 + y5 -> n1 + m5 , opinionChangeRate
+n1 + y5 -> n5 + m1 , opinionChangeRate
+n5 + y1 -> n1 + m5 , opinionChangeRate
+n5 + y1 -> n5 + m1 , opinionChangeRate
+n1 + m5 -> n1 + n5 , opinionChangeRate
+n1 + m5 -> n5 + n1 , opinionChangeRate
+n5 + m1 -> n1 + n5 , opinionChangeRate
+n5 + m1 -> n5 + n1 , opinionChangeRate
+y2 + n3 -> y2 + m3 , opinionChangeRate
+y2 + n3 -> y3 + m2 , opinionChangeRate
+y3 + n2 -> y2 + m3 , opinionChangeRate
+y3 + n2 -> y3 + m2 , opinionChangeRate
+y2 + m3 -> y2 + y3 , opinionChangeRate
+y2 + m3 -> y3 + y2 , opinionChangeRate
+y3 + m2 -> y2 + y3 , opinionChangeRate
+y3 + m2 -> y3 + y2 , opinionChangeRate
+n2 + y3 -> n2 + m3 , opinionChangeRate
+n2 + y3 -> n3 + m2 , opinionChangeRate
+n3 + y2 -> n2 + m3 , opinionChangeRate
+n3 + y2 -> n3 + m2 , opinionChangeRate
+n2 + m3 -> n2 + n3 , opinionChangeRate
+n2 + m3 -> n3 + n2 , opinionChangeRate
+n3 + m2 -> n2 + n3 , opinionChangeRate
+n3 + m2 -> n3 + n2 , opinionChangeRate
+y2 + n4 -> y2 + m4 , opinionChangeRate
+y2 + n4 -> y4 + m2 , opinionChangeRate
+y4 + n2 -> y2 + m4 , opinionChangeRate
+y4 + n2 -> y4 + m2 , opinionChangeRate
+y2 + m4 -> y2 + y4 , opinionChangeRate
+y2 + m4 -> y4 + y2 , opinionChangeRate
+y4 + m2 -> y2 + y4 , opinionChangeRate
+y4 + m2 -> y4 + y2 , opinionChangeRate
+n2 + y4 -> n2 + m4 , opinionChangeRate
+n2 + y4 -> n4 + m2 , opinionChangeRate
+n4 + y2 -> n2 + m4 , opinionChangeRate
+n4 + y2 -> n4 + m2 , opinionChangeRate
+n2 + m4 -> n2 + n4 , opinionChangeRate
+n2 + m4 -> n4 + n2 , opinionChangeRate
+n4 + m2 -> n2 + n4 , opinionChangeRate
+n4 + m2 -> n4 + n2 , opinionChangeRate
+y2 + n5 -> y2 + m5 , opinionChangeRate
+y2 + n5 -> y5 + m2 , opinionChangeRate
+y5 + n2 -> y2 + m5 , opinionChangeRate
+y5 + n2 -> y5 + m2 , opinionChangeRate
+y2 + m5 -> y2 + y5 , opinionChangeRate
+y2 + m5 -> y5 + y2 , opinionChangeRate
+y5 + m2 -> y2 + y5 , opinionChangeRate
+y5 + m2 -> y5 + y2 , opinionChangeRate
+n2 + y5 -> n2 + m5 , opinionChangeRate
+n2 + y5 -> n5 + m2 , opinionChangeRate
+n5 + y2 -> n2 + m5 , opinionChangeRate
+n5 + y2 -> n5 + m2 , opinionChangeRate
+n2 + m5 -> n2 + n5 , opinionChangeRate
+n2 + m5 -> n5 + n2 , opinionChangeRate
+n5 + m2 -> n2 + n5 , opinionChangeRate
+n5 + m2 -> n5 + n2 , opinionChangeRate
+y5 + n3 -> y5 + m3 , opinionChangeRate
+y5 + n3 -> y3 + m5 , opinionChangeRate
+y3 + n5 -> y5 + m3 , opinionChangeRate
+y3 + n5 -> y3 + m5 , opinionChangeRate
+y5 + m3 -> y5 + y3 , opinionChangeRate
+y5 + m3 -> y3 + y5 , opinionChangeRate
+y3 + m5 -> y5 + y3 , opinionChangeRate
+y3 + m5 -> y3 + y5 , opinionChangeRate
+n5 + y3 -> n5 + m3 , opinionChangeRate
+n5 + y3 -> n3 + m5 , opinionChangeRate
+n3 + y5 -> n5 + m3 , opinionChangeRate
+n3 + y5 -> n3 + m5 , opinionChangeRate
+n5 + m3 -> n5 + n3 , opinionChangeRate
+n5 + m3 -> n3 + n5 , opinionChangeRate
+n3 + m5 -> n5 + n3 , opinionChangeRate
+n3 + m5 -> n3 + n5 , opinionChangeRate
+y5 + n7 -> y5 + m7 , opinionChangeRate
+y5 + n7 -> y7 + m5 , opinionChangeRate
+y7 + n5 -> y5 + m7 , opinionChangeRate
+y7 + n5 -> y7 + m5 , opinionChangeRate
+y5 + m7 -> y5 + y7 , opinionChangeRate
+y5 + m7 -> y7 + y5 , opinionChangeRate
+y7 + m5 -> y5 + y7 , opinionChangeRate
+y7 + m5 -> y7 + y5 , opinionChangeRate
+n5 + y7 -> n5 + m7 , opinionChangeRate
+n5 + y7 -> n7 + m5 , opinionChangeRate
+n7 + y5 -> n5 + m7 , opinionChangeRate
+n7 + y5 -> n7 + m5 , opinionChangeRate
+n5 + m7 -> n5 + n7 , opinionChangeRate
+n5 + m7 -> n7 + n5 , opinionChangeRate
+n7 + m5 -> n5 + n7 , opinionChangeRate
+n7 + m5 -> n7 + n5 , opinionChangeRate
+y3 + n4 -> y3 + m4 , opinionChangeRate
+y3 + n4 -> y4 + m3 , opinionChangeRate
+y4 + n3 -> y3 + m4 , opinionChangeRate
+y4 + n3 -> y4 + m3 , opinionChangeRate
+y3 + m4 -> y3 + y4 , opinionChangeRate
+y3 + m4 -> y4 + y3 , opinionChangeRate
+y4 + m3 -> y3 + y4 , opinionChangeRate
+y4 + m3 -> y4 + y3 , opinionChangeRate
+n3 + y4 -> n3 + m4 , opinionChangeRate
+n3 + y4 -> n4 + m3 , opinionChangeRate
+n4 + y3 -> n3 + m4 , opinionChangeRate
+n4 + y3 -> n4 + m3 , opinionChangeRate
+n3 + m4 -> n3 + n4 , opinionChangeRate
+n3 + m4 -> n4 + n3 , opinionChangeRate
+n4 + m3 -> n3 + n4 , opinionChangeRate
+n4 + m3 -> n4 + n3 , opinionChangeRate
+y3 + n6 -> y3 + m6 , opinionChangeRate
+y3 + n6 -> y6 + m3 , opinionChangeRate
+y6 + n3 -> y3 + m6 , opinionChangeRate
+y6 + n3 -> y6 + m3 , opinionChangeRate
+y3 + m6 -> y3 + y6 , opinionChangeRate
+y3 + m6 -> y6 + y3 , opinionChangeRate
+y6 + m3 -> y3 + y6 , opinionChangeRate
+y6 + m3 -> y6 + y3 , opinionChangeRate
+n3 + y6 -> n3 + m6 , opinionChangeRate
+n3 + y6 -> n6 + m3 , opinionChangeRate
+n6 + y3 -> n3 + m6 , opinionChangeRate
+n6 + y3 -> n6 + m3 , opinionChangeRate
+n3 + m6 -> n3 + n6 , opinionChangeRate
+n3 + m6 -> n6 + n3 , opinionChangeRate
+n6 + m3 -> n3 + n6 , opinionChangeRate
+n6 + m3 -> n6 + n3 , opinionChangeRate
+y5 + n7 -> y5 + m7 , opinionChangeRate
+y5 + n7 -> y7 + m5 , opinionChangeRate
+y7 + n5 -> y5 + m7 , opinionChangeRate
+y7 + n5 -> y7 + m5 , opinionChangeRate
+y5 + m7 -> y5 + y7 , opinionChangeRate
+y5 + m7 -> y7 + y5 , opinionChangeRate
+y7 + m5 -> y5 + y7 , opinionChangeRate
+y7 + m5 -> y7 + y5 , opinionChangeRate
+n5 + y7 -> n5 + m7 , opinionChangeRate
+n5 + y7 -> n7 + m5 , opinionChangeRate
+n7 + y5 -> n5 + m7 , opinionChangeRate
+n7 + y5 -> n7 + m5 , opinionChangeRate
+n5 + m7 -> n5 + n7 , opinionChangeRate
+n5 + m7 -> n7 + n5 , opinionChangeRate
+n7 + m5 -> n5 + n7 , opinionChangeRate
+n7 + m5 -> n7 + n5 , opinionChangeRate
+y3 + n6 -> y3 + m6 , opinionChangeRate
+y3 + n6 -> y6 + m3 , opinionChangeRate
+y6 + n3 -> y3 + m6 , opinionChangeRate
+y6 + n3 -> y6 + m3 , opinionChangeRate
+y3 + m6 -> y3 + y6 , opinionChangeRate
+y3 + m6 -> y6 + y3 , opinionChangeRate
+y6 + m3 -> y3 + y6 , opinionChangeRate
+y6 + m3 -> y6 + y3 , opinionChangeRate
+n3 + y6 -> n3 + m6 , opinionChangeRate
+n3 + y6 -> n6 + m3 , opinionChangeRate
+n6 + y3 -> n3 + m6 , opinionChangeRate
+n6 + y3 -> n6 + m3 , opinionChangeRate
+n3 + m6 -> n3 + n6 , opinionChangeRate
+n3 + m6 -> n6 + n3 , opinionChangeRate
+n6 + m3 -> n3 + n6 , opinionChangeRate
+n6 + m3 -> n6 + n3 , opinionChangeRate
+y7 + n6 -> y7 + m6 , opinionChangeRate
+y7 + n6 -> y6 + m7 , opinionChangeRate
+y6 + n7 -> y7 + m6 , opinionChangeRate
+y6 + n7 -> y6 + m7 , opinionChangeRate
+y7 + m6 -> y7 + y6 , opinionChangeRate
+y7 + m6 -> y6 + y7 , opinionChangeRate
+y6 + m7 -> y7 + y6 , opinionChangeRate
+y6 + m7 -> y6 + y7 , opinionChangeRate
+n7 + y6 -> n7 + m6 , opinionChangeRate
+n7 + y6 -> n6 + m7 , opinionChangeRate
+n6 + y7 -> n7 + m6 , opinionChangeRate
+n6 + y7 -> n6 + m7 , opinionChangeRate
+n7 + m6 -> n7 + n6 , opinionChangeRate
+n7 + m6 -> n6 + n7 , opinionChangeRate
+n6 + m7 -> n7 + n6 , opinionChangeRate
+n6 + m7 -> n6 + n7 , opinionChangeRate
+y7 + n9 -> y7 + m9 , opinionChangeRate
+y7 + n9 -> y9 + m7 , opinionChangeRate
+y9 + n7 -> y7 + m9 , opinionChangeRate
+y9 + n7 -> y9 + m7 , opinionChangeRate
+y7 + m9 -> y7 + y9 , opinionChangeRate
+y7 + m9 -> y9 + y7 , opinionChangeRate
+y9 + m7 -> y7 + y9 , opinionChangeRate
+y9 + m7 -> y9 + y7 , opinionChangeRate
+n7 + y9 -> n7 + m9 , opinionChangeRate
+n7 + y9 -> n9 + m7 , opinionChangeRate
+n9 + y7 -> n7 + m9 , opinionChangeRate
+n9 + y7 -> n9 + m7 , opinionChangeRate
+n7 + m9 -> n7 + n9 , opinionChangeRate
+n7 + m9 -> n9 + n7 , opinionChangeRate
+n9 + m7 -> n7 + n9 , opinionChangeRate
+n9 + m7 -> n9 + n7 , opinionChangeRate
+y6 + n8 -> y6 + m8 , opinionChangeRate
+y6 + n8 -> y8 + m6 , opinionChangeRate
+y8 + n6 -> y6 + m8 , opinionChangeRate
+y8 + n6 -> y8 + m6 , opinionChangeRate
+y6 + m8 -> y6 + y8 , opinionChangeRate
+y6 + m8 -> y8 + y6 , opinionChangeRate
+y8 + m6 -> y6 + y8 , opinionChangeRate
+y8 + m6 -> y8 + y6 , opinionChangeRate
+n6 + y8 -> n6 + m8 , opinionChangeRate
+n6 + y8 -> n8 + m6 , opinionChangeRate
+n8 + y6 -> n6 + m8 , opinionChangeRate
+n8 + y6 -> n8 + m6 , opinionChangeRate
+n6 + m8 -> n6 + n8 , opinionChangeRate
+n6 + m8 -> n8 + n6 , opinionChangeRate
+n8 + m6 -> n6 + n8 , opinionChangeRate
+n8 + m6 -> n8 + n6 , opinionChangeRate
+y7 + n9 -> y7 + m9 , opinionChangeRate
+y7 + n9 -> y9 + m7 , opinionChangeRate
+y9 + n7 -> y7 + m9 , opinionChangeRate
+y9 + n7 -> y9 + m7 , opinionChangeRate
+y7 + m9 -> y7 + y9 , opinionChangeRate
+y7 + m9 -> y9 + y7 , opinionChangeRate
+y9 + m7 -> y7 + y9 , opinionChangeRate
+y9 + m7 -> y9 + y7 , opinionChangeRate
+n7 + y9 -> n7 + m9 , opinionChangeRate
+n7 + y9 -> n9 + m7 , opinionChangeRate
+n9 + y7 -> n7 + m9 , opinionChangeRate
+n9 + y7 -> n9 + m7 , opinionChangeRate
+n7 + m9 -> n7 + n9 , opinionChangeRate
+n7 + m9 -> n9 + n7 , opinionChangeRate
+n9 + m7 -> n7 + n9 , opinionChangeRate
+n9 + m7 -> n9 + n7 , opinionChangeRate
+y6 + n8 -> y6 + m8 , opinionChangeRate
+y6 + n8 -> y8 + m6 , opinionChangeRate
+y8 + n6 -> y6 + m8 , opinionChangeRate
+y8 + n6 -> y8 + m6 , opinionChangeRate
+y6 + m8 -> y6 + y8 , opinionChangeRate
+y6 + m8 -> y8 + y6 , opinionChangeRate
+y8 + m6 -> y6 + y8 , opinionChangeRate
+y8 + m6 -> y8 + y6 , opinionChangeRate
+n6 + y8 -> n6 + m8 , opinionChangeRate
+n6 + y8 -> n8 + m6 , opinionChangeRate
+n8 + y6 -> n6 + m8 , opinionChangeRate
+n8 + y6 -> n8 + m6 , opinionChangeRate
+n6 + m8 -> n6 + n8 , opinionChangeRate
+n6 + m8 -> n8 + n6 , opinionChangeRate
+n8 + m6 -> n6 + n8 , opinionChangeRate
+n8 + m6 -> n8 + n6 , opinionChangeRate
+y6 + n8 -> y6 + m8 , opinionChangeRate
+y6 + n8 -> y8 + m6 , opinionChangeRate
+y8 + n6 -> y6 + m8 , opinionChangeRate
+y8 + n6 -> y8 + m6 , opinionChangeRate
+y6 + m8 -> y6 + y8 , opinionChangeRate
+y6 + m8 -> y8 + y6 , opinionChangeRate
+y8 + m6 -> y6 + y8 , opinionChangeRate
+y8 + m6 -> y8 + y6 , opinionChangeRate
+n6 + y8 -> n6 + m8 , opinionChangeRate
+n6 + y8 -> n8 + m6 , opinionChangeRate
+n8 + y6 -> n6 + m8 , opinionChangeRate
+n8 + y6 -> n8 + m6 , opinionChangeRate
+n6 + m8 -> n6 + n8 , opinionChangeRate
+n6 + m8 -> n8 + n6 , opinionChangeRate
+n8 + m6 -> n6 + n8 , opinionChangeRate
+n8 + m6 -> n8 + n6 , opinionChangeRate
+y9 + n8 -> y9 + m8 , opinionChangeRate
+y9 + n8 -> y8 + m9 , opinionChangeRate
+y8 + n9 -> y9 + m8 , opinionChangeRate
+y8 + n9 -> y8 + m9 , opinionChangeRate
+y9 + m8 -> y9 + y8 , opinionChangeRate
+y9 + m8 -> y8 + y9 , opinionChangeRate
+y8 + m9 -> y9 + y8 , opinionChangeRate
+y8 + m9 -> y8 + y9 , opinionChangeRate
+n9 + y8 -> n9 + m8 , opinionChangeRate
+n9 + y8 -> n8 + m9 , opinionChangeRate
+n8 + y9 -> n9 + m8 , opinionChangeRate
+n8 + y9 -> n8 + m9 , opinionChangeRate
+n9 + m8 -> n9 + n8 , opinionChangeRate
+n9 + m8 -> n8 + n9 , opinionChangeRate
+n8 + m9 -> n9 + n8 , opinionChangeRate
+n8 + m9 -> n8 + n9 , opinionChangeRate
+end reactions
+simulateODE(tEnd=5.0 , viewPlot=VARS&VIEWS , viewLabels=true)
+end model
