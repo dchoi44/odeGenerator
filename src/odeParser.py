@@ -93,7 +93,7 @@ def odeParser(infile = 'YesOrNo.ode'):
      
     
     
-def odeWriter(workData,outfile = 'YesOrNoParser'):  
+def odeWriter(workData,outfile = 'YesOrNoParser.ode'):  
     
     beginFlags = ['begin model','begin parameters','begin init','begin reactions','simulateODE']
     endFlags = ['end model','end parameters','end init','end reactions']
