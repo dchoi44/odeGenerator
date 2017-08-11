@@ -1,29 +1,31 @@
 import random
 
-class Voter:
-	def __init__(self, opinion):
-		self.__opinion = opinion
-		self.__friends = []
+# # Voter class is legacy now, not used in the main function.
+# class Voter:
+# 	def __init__(self, opinion):
+# 		self.__opinion = opinion
+# 		self.__friends = []
 
-	def get_friends(self):
-		return self.__friends
+# 	def get_friends(self):
+# 		return self.__friends
 
-	def get_opinion(self):
-		return self.__opinion
+# 	def get_opinion(self):
+# 		return self.__opinion
 
-	def push_friend(self, friend):
-		self.__friends.append(friend)
+# 	def push_friend(self, friend):
+# 		self.__friends.append(friend)
 
-class UserDict:
-	def __init__(self):
-		self.dict = {}
+# class UserDict:
+# 	def __init__(self):
+# 		self.dict = {}
 
-	def push_usr(self, uid):
-		if self.dict.has_key(uid):
-			return self.dict[uid]
-		else:
-			self.dict[uid] = Voter(int((random.random() * 3 + 1) / 1) - 2)
-			return self.dict[uid]
+# 	def push_usr(self, uid):
+# 		if self.dict.has_key(uid):
+# 			return self.dict[uid]
+# 		else:
+# 			self.dict[uid] = Voter(int((random.random() * 3 + 1) / 1) - 2)
+# 			return self.dict[uid]
+#
 
 def parser_main(fname = './facebook/0.edges', directed = False):
 
