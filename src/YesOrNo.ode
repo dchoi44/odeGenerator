@@ -1,0 +1,41 @@
+// This models a simple distributed voting or gossip dissemination protocol
+// The system is composed of identical agents that may have an opinion on something: yes, no or maybe
+// Two agents can interact, where one influences the opinion of the other
+// An interesting question is whether the system converges to a state where all agents have the same opinon
+begin model YesOrNo
+
+ begin parameters
+ 	// This is the rate for changing opinion
+ 	opinionChangeRate = 0.01
+ end parameters
+ 
+ 
+ begin init
+ 	// Each variable corresponds to an opinion
+ 	// the value indicates how many agents have that opinion
+ 	yes = 501
+ 	no = 500
+ 	maybe=0
+ end init
+ 
+/*
+ * List of reactions. Each reaction is specified as:
+ * 	reagents -> products , rate
+ * where "reagents" and "products" are multisets of variables, while "rate" can be 
+ * 	1) an arithmetic expression of reals and parameters. In which case we have a mass action reaction, and the rate is its kinetic constant
+ * 	2) "arbitrary", followed by an arithmetic expression of reals, parameters and variables. The rate is the actual firing rate of this arbitrary reaction
+ * 	3) "Hill", followed by three real parameters K, R1, and R2, and two naturals n1 and n2. This is a reaction with Hill kinetics.
+ * 	 
+ */
+begin reactions
+	yes +  no    -> yes + maybe , opinionChangeRate	// A yes-voter makes a no-voter to doubt
+	yes + maybe -> yes + yes   , opinionChangeRate 	// A yes-voter convinces an undecided agent to vote "yes"
+	 no + yes   ->  no + maybe , opinionChangeRate	// Similar to the first reaction
+	 no + maybe ->  no + no    , opinionChangeRate	// Similar to the second reaction
+end reactions
+ 
+ /*
+  * This command is used to simulate and visualise the evolution of the system 
+  */
+ simulateODE(tEnd=5.0 , viewPlot=VARS&VIEWS , viewLabels=true)
+end model
