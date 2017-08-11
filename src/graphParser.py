@@ -25,7 +25,7 @@ class UserDict:
 			self.dict[uid] = Voter(int((random.random() * 3 + 1) / 1) - 2)
 			return self.dict[uid]
 
-def parser_main(fname = './facebook/0.edges', directed = True):
+def parser_main(fname = './facebook/0.edges', directed = False):
 
 	udict = UserDict()
 	func = lambda x, y: x.push_friend(y)
