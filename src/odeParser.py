@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 
+beginFlags = ['begin model','begin parameters','begin init','begin reactions','simulateODE']
+endFlags = ['end model','end parameters','end init','end reactions']
+
 def odeParser(infile):
     if infile == None:
         infile = '../dat/YesOrNo.ode'
     with open(infile,'r') as infile:
         
-                
-        beginFlags = ['begin model','begin parameters','begin init','begin reactions','simulateODE']
-        endFlags = ['end model','end parameters','end init','end reactions']
-    
         #Here all the input file data necessary for making the calculations over the graph are going to be saved, and also not saved in the outFileData,until is processed
         """
         {index:{
@@ -93,9 +92,7 @@ def odeParser(infile):
 def odeWriter(workData, outfile):  
     if outfile == None:
         outfile = '../out/YesOrNoParser.ode'
-    
-    beginFlags = ['begin model','begin parameters','begin init','begin reactions','simulateODE']
-    endFlags = ['end model','end parameters','end init','end reactions']
+        
     endFlagDict = {beginFlags[i]:endFlags[i] for i in range(len(beginFlags)) if i<len(endFlags)}
     finalOutfileLine = '' 
 
