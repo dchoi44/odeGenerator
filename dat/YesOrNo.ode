@@ -13,9 +13,12 @@ begin model YesOrNo
  begin init
  	// Each variable corresponds to an opinion
  	// the value indicates how many agents have that opinion
- 	yes = 501
- 	no = 500
- 	maybe=0
+ 	//yes = 5
+ 	//no = 4
+ 	//maybe=0
+ 	yes = 2501
+ 	no = 2500
+ 	maybe = 37
  end init
  
 /*
