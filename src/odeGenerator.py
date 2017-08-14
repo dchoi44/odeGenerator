@@ -3,6 +3,7 @@
 if __name__ == '__main__':
     import odeParser
     import graphParser
+    import os
     from sys import argv
 
     graph_path = None
@@ -106,5 +107,9 @@ if __name__ == '__main__':
                 eq_list_new += eq_writer(eq_list[i], id_from, id_to)
     print('Done generating ODEs')
     workDataDict[3]['begin reactions'] = eq_list_new
-
+    
+    if output_path == None:
+        output_path = '../out/'
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
     odeParser.odeWriter(workDataDict, output_path)

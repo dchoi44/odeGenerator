@@ -89,10 +89,8 @@ def odeParser(infile):
      
     
     
-def odeWriter(workData, outfile):  
-    if outfile == None:
-        outfile = '../out/YesOrNoParser.ode'
-        
+def odeWriter(workData, outfile):
+    outfile = outfile + '/YesOrNoParser.ode'
     endFlagDict = {beginFlags[i]:endFlags[i] for i in range(len(beginFlags)) if i<len(endFlags)}
     finalOutfileLine = '' 
 
