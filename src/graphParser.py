@@ -25,6 +25,21 @@ class Voter:
 	def visiting(self):
 		self.__visited = True
 
+class Cluster:
+	def __init__(self, uid, option, number):
+		self.__opinion = {}
+		self.update(option, number)
+		self.__uid = uid
+
+	def get_opinion(self):
+		return self.__opinion
+
+	def get_uid(self):
+		return self.__uid
+
+	def update(self, option, number):
+		self.__opinion[option] = number
+
 class Relationship:
 	def __init__(self, id_from, id_to):
 		self.__nodes = id_from, id_to
@@ -43,6 +58,19 @@ class Usr_dict:
 			self.dict[uid] = Voter(cond_list.pop(), uid)
 			return self.dict[uid]
 
+class Cluster_dict:
+	def __init__(self):
+		self.dict = {}
+
+	def update_cluster(self, uid, option, number):
+		if uid in self.dict.keys():
+			self.dict[uid].update(option, number)
+			return self.dict[uid]
+		else:
+			self.dict[uid] = Cluster(uid, option, number)
+			return self.dict[uid]
+
+
 class Edge_dict:
 	def __init__(self):
 		self.__dict = {}
@@ -56,7 +84,7 @@ class Edge_dict:
 	def get_dict(self):
 		return self.__dict
 
-def parser_main_node(fname, conditions, directed = False):
+def parser_main_node(fname, conditions, is_cluster, directed = False ):
 	if fname == None:
 		fname = '../dat/practice.txt'
 
@@ -80,32 +108,57 @@ def parser_main_node(fname, conditions, directed = False):
 	print('Loading completed\n')
 	return udict.dict
 
-def parser_main_edge(fname, conditions):
+def parser_main_edge(fname, conditions, is_cluster):
 	import random
 	if fname == None:
-		fname = '../dat/practice.txt'
+		fname = '../dat/cluster practice'
 
-	cond_list = []
-	for condition in conditions:
-		cond_list += [condition[0]] * int(condition[1])
+	if not is_cluster:
+		cond_list = []
+		for condition in conditions:
+			cond_list += [condition[0]] * int(condition[1])
 
-	random.shuffle(cond_list)
+		random.shuffle(cond_list)
+		udict = Usr_dict()
+	else:
+		pass
+
 	edict = Edge_dict()
-	udict = Usr_dict()
 
 	print('Loading the graph file at ' + fname)
 	
-	with open(fname, 'r') as fin:
-		for line in fin:
-			id_from, id_to = map(int, line.strip().split(' '))
-			udict.push_usr(id_from, cond_list)
-			udict.push_usr(id_to, cond_list)
-			edict.push_edge(id_from, id_to)
+	if not is_cluster:
+		with open(fname, 'r') as fin:
+			for line in fin:
+				id_from, id_to = map(int, line.strip().split())
+				udict.push_usr(id_from, cond_list)
+				udict.push_usr(id_to, cond_list)
+				edict.push_edge(id_from, id_to)
+	else:
+		udict = Cluster_dict()
+		with open(fname, 'r') as fin:
+			line = fin.readline()
+			while line != '':
+				if 'initial start' in line:
+					line = fin.readline()
+					while 'initial end' not in line:
+						option, uid, number = line.strip().split()
+						udict.update_cluster(uid, option, number)
+						line = fin.readline()
+
+				elif 'graph start' in line:
+					line = fin.readline()
+					while 'graph end' not in line:
+						id_from, id_to = map(int, line.strip().split())
+						edict.push_edge(id_from, id_to)
+						line = fin.readline()
+
+				line = fin.readline()
+
+
 
 	print('Loading completed')
 	return edict.get_dict(), udict.dict
 
 if __name__ == '__main__':
-	udict = parser_main_node(None, [['yes', '4'], ['no', '5'], ['maybe', '0']])
-	for i in range(9):
-		print(udict[i+1].get_opinion(), end=' ')
+    edgeDict, graphDict = parser_main_edge(None, None, True)
