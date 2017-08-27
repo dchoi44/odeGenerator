@@ -15,6 +15,7 @@ if __name__ == '__main__':
     timer = False
     start_time = 0
     is_cluster = False
+    initial = '../dat/cluster practice'
     i = 1
     while i < len(argv):
         if argv[i] == '-graph':
@@ -36,6 +37,9 @@ if __name__ == '__main__':
         elif argv[i] == '-cluster':
             is_cluster = True
             i += 1
+        elif argv[i] == '-initial':
+            initial = argv[i + 1]
+            i += 2
         else:
             print ('error parsing args')
 
@@ -62,15 +66,21 @@ if __name__ == '__main__':
     if itermode == 'node':
         graphDict = graphParser.parser_main_node(graph_path, conditions, is_cluster)
     else:
-        edgeDict, graphDict = graphParser.parser_main_edge(graph_path, conditions, is_cluster)
+        edgeDict, graphDict = graphParser.parser_main_edge(graph_path, conditions, is_cluster, initial)
 
     begin_initial = dict()
     initlist = []
 
-    for key,value in graphDict.items():
-        for option, _ in conditions:
-            initlist.append(option + '_' +  str(key) + ' = ' +
-                            str(value.get_opinion()[option]))
+    if is_cluster:
+        for key,value in graphDict.items():
+            for option, _ in conditions:
+                initlist.append(option + '_' +  str(key) + ' = ' +
+                                str(value.get_opinion()[option]))
+    else:
+        for key,value in graphDict.items():
+            for option, _ in conditions:
+                initlist.append(option + '_' + str(key) + ' = ' + 
+                                str(int(option == value.get_opinion())))
 
     begin_initial['begin init'] = initlist
 

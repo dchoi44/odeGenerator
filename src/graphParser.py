@@ -108,10 +108,10 @@ def parser_main_node(fname, conditions, is_cluster, directed = False ):
 	print('Loading completed\n')
 	return udict.dict
 
-def parser_main_edge(fname, conditions, is_cluster):
+def parser_main_edge(gfname, conditions, is_cluster, ifname = None):
 	import random
-	if fname == None:
-		fname = '../dat/cluster practice'
+	if gfname == None:
+		gfname = '../dat/graph practice'
 
 	if not is_cluster:
 		cond_list = []
@@ -125,35 +125,26 @@ def parser_main_edge(fname, conditions, is_cluster):
 
 	edict = Edge_dict()
 
-	print('Loading the graph file at ' + fname)
+	print('Loading the graph file at ' + gfname)
 	
 	if not is_cluster:
-		with open(fname, 'r') as fin:
-			for line in fin:
+		with open(gfname, 'r') as gfin:
+			for line in gfin:
 				id_from, id_to = map(int, line.strip().split())
 				udict.push_usr(id_from, cond_list)
 				udict.push_usr(id_to, cond_list)
 				edict.push_edge(id_from, id_to)
 	else:
 		udict = Cluster_dict()
-		with open(fname, 'r') as fin:
-			line = fin.readline()
-			while line != '':
-				if 'initial start' in line:
-					line = fin.readline()
-					while 'initial end' not in line:
-						option, uid, number = line.strip().split()
-						udict.update_cluster(uid, option, number)
-						line = fin.readline()
+		with open(gfname, 'r') as gfin:
+			with open(ifname, 'r') as ifin:
+				for line in ifin:
+					option, uid, number = line.strip().split()
+					udict.update_cluster(uid, option, number)
 
-				elif 'graph start' in line:
-					line = fin.readline()
-					while 'graph end' not in line:
-						id_from, id_to = map(int, line.strip().split())
-						edict.push_edge(id_from, id_to)
-						line = fin.readline()
-
-				line = fin.readline()
+			for line in gfin:
+				id_from, id_to = map(int, line.strip().split())
+				edict.push_edge(id_from, id_to)
 
 
 
